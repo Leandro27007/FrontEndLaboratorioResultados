@@ -1,1 +1,22 @@
-<p class="login" *ngFor="let user of users; track user ">NOMBRE:! {{user | json}}</p>
+
+<div class="parent">
+    <div class="container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="email" [(ngModel)]="loginObj.userName" name="EmailId" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" [(ngModel)]="loginObj.password" name="Password" required>
+                    <label>Password</label>
+                </div>
+                
+                <button type="button" class="btn" (click)="onLogin()" >Login</button>
+                 
+            </form>
+        </div>
+        
+    </div>
+</div>
