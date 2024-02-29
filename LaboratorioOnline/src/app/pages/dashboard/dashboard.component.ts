@@ -12,20 +12,12 @@ export class DashboardComponent implements OnInit {
 
 
   users:any[]=[];
-  constructor(private http: HttpClient) {
+  constructor() {
 
   }
   ngOnInit(): void {
-    this.getAllusers();
+
   }
 
-  getAllusers() {
-    debugger;
-    this.http.get('https://freeapi.gerasim.in/api/User/GetAllUsers').subscribe((res:any) => {
-      this.users = res.data;
-    } , error => {
-      alert("Error From API")
-    })
-  }
 
 }
