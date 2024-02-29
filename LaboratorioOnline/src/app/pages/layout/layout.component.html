@@ -1,29 +1,69 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Login App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+<nav class="bg-gray-800 flex items-center justify-between">
+  <div class="container mx-auto">
+    <div class="flex items-center">
+      <a href="/" class="text-white font-bold mr-4">Tu Logo</a>
+      <ul class="flex">
+        <li>
+          <a href="/" class="text-gray-300 hover:text-white px-4">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/resultado">Link</a>
+        <li>
+          <a href="/about" class="text-gray-300 hover:text-white px-4"
+            >Acerca de</a
+          >
         </li>
-        
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li>
+          <a href="/contact" class="text-gray-300 hover:text-white px-4"
+            >Contacto</a
+          >
         </li>
       </ul>
-      <form class="d-flex">
-        
-        <button class="btn btn-success" type="button" (click)="logoff()">Log-Off</button>
-      </form>
+    </div>
+    <div class="flex items-center">
+      <button
+        class="text-gray-300 hover:text-white px-4"
+        (click)="toggleMenu()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+      <div
+        *ngIf="showMenu"
+        class="absolute bg-gray-800 z-10 rounded shadow-md mt-2"
+      >
+        <ul class="flex flex-col">
+          <li>
+            <a href="/profile" class="text-gray-300 hover:text-white px-4 py-2"
+              >Perfil</a
+            >
+          </li>
+          <li>
+            <a href="/settings" class="text-gray-300 hover:text-white px-4 py-2"
+              >Configuración</a
+            >
+          </li>
+          <li>
+            <a href="/logout" class="text-gray-300 hover:text-white px-4 py-2"
+              >Cerrar sesión</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>
