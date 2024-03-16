@@ -1,0 +1,74 @@
+<nav class="bg-blue-950 flex items-center justify-between">
+  <div class="container flex mt-3 mb-3 mx-auto">
+    <div class="flex items-center">
+      <a href="/" class="text-white fs-4 font-bold mr-4">Laboratorio Online</a>
+      <ul class="flex">
+        <li>
+          <a href="/" class="text-gray-100 hover:text-white px-4">Inicio</a>
+        </li>
+        <li>
+          <a href="/about" class="text-gray-100 hover:text-white px-4"
+            >Acerca de</a
+          >
+        </li>
+        <li>
+          <a href="/contact" class="text-gray-100 hover:text-white px-4"
+            >Contacto</a
+          >
+        </li>
+        <li>
+          <a href="/contact" class="text-gray-100 hover:text-white px-4"
+            >Login</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="flex">
+      <button
+        class="text-gray-100 hover:text-white px-4"
+        (click)="toggleMenu()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+      <div
+        *ngIf="showMenu"
+        class="absolute bg-blue-300 z-10 rounded shadow-md mt-2"
+      >
+        <ul class="flex flex-col mt-2 mb-2">
+          <li>
+            <a href="/profile" class="text-black hover:text-white px-4 py-2"
+              >Perfil</a
+            >
+          </li>
+          <li>
+            <a href="/settings" class="text-black hover:text-white px-4 py-2"
+              >Configuración</a
+            >
+          </li>
+          <li>
+            <a href="/logout" class="text-black hover:text-white px-4 py-2"
+              >Cerrar sesión</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
