@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpErrorResponse,
+  HttpHeaders,
   HttpParams,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -16,8 +17,14 @@ export abstract class BaseHttpService<RequestType, ResponseType> {
   abstract getResourceUrl(): string;
 
   obtener(params?: string): Observable<ResponseType> {
+
+    const token = localStorage.getItem('angular17token');
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    });
+
     return this.httpClient
-      .get<ResponseType>(`${this.APIUrl}` + '/' + (params? params:""))
+      .get<ResponseType>(`${this.APIUrl}` + '/' + (params? params:""), {headers})
       .pipe(catchError(this.handleError));
   }
 

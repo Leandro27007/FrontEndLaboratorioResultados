@@ -27,6 +27,11 @@ export const routes: Routes = [
                 path:'resultado',
                 component:ResultadoComponent,
                 canActivate: [authGuard]
+            },
+            {
+                path:'logout',
+                component:ResultadoComponent,
+                canActivate: [authGuard]
             }
         ]
     }

@@ -6,6 +6,8 @@ import {JsonPipe} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-resultado',
@@ -20,9 +22,12 @@ export default class ResultadoComponen implements OnInit {
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
+
+  TrusURL: any;
+  urlResultado: string = "";
   public resultados:any;
 
-  constructor(private resultadoService : ResultadoService) {
+  constructor(private resultadoService : ResultadoService, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -41,7 +46,10 @@ export default class ResultadoComponen implements OnInit {
   }
 
   showModal = false;
-  toggleModal(){
+  toggleModal(url:string){
+    this.urlResultado = url;
+
+    this.TrusURL = this.sanitizer.bypassSecurityTrustUrl(url);
     this.showModal = !this.showModal;
   }
 

@@ -32,8 +32,13 @@ export class LayoutComponent implements OnInit {
 
 
   logoff() {
+    console.log("LOGOUT")
     localStorage.removeItem('angular17token')
     this.router.navigateByUrl('/login');
+  }
+  resultados() {
+
+    this.router.navigateByUrl('/resultado');
   }
 
   menuItems = signal<MenuItem[]>([

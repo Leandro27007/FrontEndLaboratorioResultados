@@ -1,4 +1,3 @@
-
 <div class="max-w-md mx-auto mb-14 text-center">
   <h1 class="text-4xl font-semibold mb-6 lg:text-5xl"> Tus <span class="text-indigo-600">Resultados</span>
   </h1>
@@ -12,19 +11,20 @@
     <mat-hint>Mes/Dia/Año – Mes/Dia/Año</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
-  
+
     @if (range.controls.start.hasError('matStartDateInvalid')) {
-      <mat-error>Invalid start date</mat-error>
+    <mat-error>Invalid start date</mat-error>
     }
     @if (range.controls.end.hasError('matEndDateInvalid')) {
-      <mat-error>Invalid end date</mat-error>
+    <mat-error>Invalid end date</mat-error>
     }
   </mat-form-field>
 </div>
-<div class="w-full shadow-sm bg-slate-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-6 pl-3 pr-3">
+<div
+  class="w-full shadow-sm bg-slate-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-6 pl-3 pr-3">
   @for (item of resultados; track $index) {
 
-  <div class="bg-white dark:bg-gray-800 rounded py-5 pl-6 flex items-start shadow">
+  <div  class="bg-white dark:bg-gray-800 rounded py-5 pl-6 flex items-start shadow">
     <div class="text-gray-700 dark:text-gray-400">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dashboard" width="32" height="32"
         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -37,7 +37,7 @@
     </div>
     <div class="pl-3 pr-10 mt-1">
       <h3 class="font-normal leading-4 pb-3 text-green-400 dark:text-black-100 text-base">{{item.fecha}}</h3>
-      <button class=" border-blue-300 dark:blue-red-700 border-dashed border-3">
+      <button class=" border-blue-300 dark:blue-red-700 border-dashed border-3" (click)="toggleModal(item.url)">
         <img src="https://pub-bb695d5f0667442a887cb27931ea5d88.r2.dev/coprologico%20con%20imagen%20(1).png">
       </button>
       <div class="flex items-end mt-4 ">
@@ -45,7 +45,7 @@
       </div>
       <div class="flex items-center mt-1">
         <div class="text-green-400">
-        <!--  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trending-up" width="24"
+          <!--  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trending-up" width="24"
             height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
@@ -66,40 +66,43 @@
 
 
 <!--MODAL******************************-->
-<button class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
-  Open large modal
-</button>
-<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+
+<div *ngIf="showModal"
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
   <div class="relative w-auto my-6 mx-auto max-w-6xl">
     <!--content-->
-    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+    <div class="border-0 rounded-lg  shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
       <!--header-->
-      <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+      <div class="flex items-start justify-between p-2 border-b border-solid border-blueGray-200 rounded-t">
         <h3 class="text-3xl font-semibold">
-          Modal Title
+          22/03/2024
         </h3>
-        
-        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+
+        <button
+          class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+          (click)="toggleModal('')">
           <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
             ×
           </span>
         </button>
       </div>
       <!--body-->
-      <div class="relative p-6 flex-auto">
-        <iframe class="w-full aspect-video" src="https://pub-bb695d5f0667442a887cb27931ea5d88.r2.dev/40213181072-75378"> </iframe>
-
-
-      
+      <div class="relative p-3 flex-auto">
+        <iframe  src="https://pub-bb695d5f0667442a887cb27931ea5d88.r2.dev/40213181072-75378">
+        </iframe>
       </div>
       <!--footer-->
       <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-            
-        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
-          Close
+
+        <button
+          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button" (click)="toggleModal('')">
+          Cerrar
         </button>
-        <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
-          Save Changes
+        <button
+          class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button" (click)="toggleModal('')">
+          Descargar
         </button>
       </div>
     </div>
